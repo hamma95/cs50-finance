@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div class=".quoted">
+        <h4>Results</h4>
+        {% if quote %}
+        <p>A share of {{quote['name']}}, Inc. ({{quote['symbol']}}) costs {{quote['price'] | usd}}.</p>
+        {% else %}
+        <p>No results</p>
+        {% endif %}
+    </div>
+
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text" required>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+
+
+{% endblock %}
